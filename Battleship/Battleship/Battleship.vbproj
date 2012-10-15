@@ -155,6 +155,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app-battleshipt.ico" />
+    <Content Include="Bilder\battleship.gif" />
+    <Content Include="Bilder\carrier.gif" />
+    <Content Include="Bilder\fire.gif" />
+    <Content Include="Bilder\minesweeper.png" />
+    <Content Include="Bilder\patrol.gif" />
+    <Content Include="Bilder\ShipPart\Battleship_1.png" />
+    <Content Include="Bilder\ShipPart\Battleship_2.png" />
+    <Content Include="Bilder\ShipPart\Battleship_3.png" />
+    <Content Include="Bilder\ShipPart\Battleship_4.png" />
+    <Content Include="Bilder\ShipPart\Carrier_1.png" />
+    <Content Include="Bilder\ShipPart\Carrier_2.png" />
+    <Content Include="Bilder\ShipPart\Carrier_3.png" />
+    <Content Include="Bilder\ShipPart\Carrier_4.png" />
+    <Content Include="Bilder\ShipPart\Carrier_5.png" />
+    <Content Include="Bilder\ShipPart\Patrol_1.png" />
+    <Content Include="Bilder\ShipPart\Patrol_2.png" />
+    <Content Include="Bilder\ShipPart\Submarine_1.png" />
+    <Content Include="Bilder\ShipPart\Submarine_2.png" />
+    <Content Include="Bilder\ShipPart\Submarine_3.png" />
+    <Content Include="Bilder\splash.gif" />
+    <Content Include="Bilder\submarine.gif" />
+    <Content Include="Bilder\water.gif" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
@@ -178,6 +200,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

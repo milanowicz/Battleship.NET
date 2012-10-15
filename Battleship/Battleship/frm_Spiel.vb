@@ -115,45 +115,27 @@
     ' Staren von Battleship
     Private Sub frm_Spiel_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        Dim SpielStartFehler As Boolean = False
+        With Me.cmb_GameLevel.Items
+            .Clear()
 
-        If System.IO.Directory.Exists("Bilder") = False Then
-            SpielStartFehler = True
-        End If
+            .Add("Leicht")
+            .Add("Medium")
+            .Add("Hardcore")
+        End With
 
-        If System.IO.Directory.Exists("Bilder\ShipPart") = False Then
-            SpielStartFehler = True
-        End If
+        ' DEBUG MODUS
+        Me.cb_Debug.Checked = True
+        Me.cb_Computer.Checked = True
 
+        SpielLaeuft = False
+        Me.txt_SpielerName.Text = SpielerName
+        Me.txt_SchiffAnzahl.Text = SchiffAnzahl
+        Me.txt_SpielfeldHoehe.Text = SpielfeldHoehe
+        Me.txt_SpielfeldBreite.Text = SpielfeldBreite
+        Me.txt_MinenAnzahl.Text = SpielfeldMinen
+        Me.cmb_GameLevel.SelectedIndex = SpielLevel
+        SetzFensterMenu()
 
-        If SpielStartFehler = False Then
-
-            With Me.cmb_GameLevel.Items
-                .Clear()
-
-                .Add("Leicht")
-                .Add("Medium")
-                .Add("Hardcore")
-            End With
-
-            ' DEBUG
-            Me.cb_Debug.Checked = True
-            Me.cb_Computer.Checked = True
-
-            SpielLaeuft = False
-            Me.txt_SpielerName.Text = SpielerName
-            Me.txt_SchiffAnzahl.Text = SchiffAnzahl
-            Me.txt_SpielfeldHoehe.Text = SpielfeldHoehe
-            Me.txt_SpielfeldBreite.Text = SpielfeldBreite
-            Me.txt_MinenAnzahl.Text = SpielfeldMinen
-            Me.cmb_GameLevel.SelectedIndex = SpielLevel
-            SetzFensterMenu()
-
-        Else
-
-            MsgBox("Spiel konnte nicht geladen werden! Weil die Bilder zum Spiel fehlen !!!")
-
-        End If
     End Sub
 
 
@@ -674,16 +656,16 @@
                         .RowHeadersVisible = False
 
                         .Rows.Add()
-                        .Rows(0).Cells(0).Value = Image.FromFile(BildSchiffBattleshipHor)
+                        .Rows(0).Cells(0).Value = BildSchiffBattleshipHor
 
                         .Rows.Add()
-                        .Rows(1).Cells(0).Value = Image.FromFile(BildSchiffCarrierHor)
+                        .Rows(1).Cells(0).Value = BildSchiffCarrierHor
 
                         .Rows.Add()
-                        .Rows(2).Cells(0).Value = Image.FromFile(BildSchiffSubmarineHor)
+                        .Rows(2).Cells(0).Value = BildSchiffSubmarineHor
 
                         .Rows.Add()
-                        .Rows(3).Cells(0).Value = Image.FromFile(BildSchiffPatrolHor)
+                        .Rows(3).Cells(0).Value = BildSchiffPatrolHor
 
                         .CurrentCell.Selected = False
 

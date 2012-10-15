@@ -24,7 +24,7 @@
         End If
 
         ' Wasser Bild laden
-        Dim Bild As Image = Image.FromFile(BildWasser)
+        Dim Bild As Image = BildWasser
 
         ' GridView Spalten initialisieren
         For i As Integer = 0 To SpielfeldBreite - 1
@@ -153,7 +153,7 @@
 
             If DebugModus = True Then
 
-                Dim tmpPic As Image = Image.FromFile(pSchiffBild & i + 1 & ".png")
+                Dim tmpPic As Image = ErhalteSchiffPart(pSchiffBild, i + 1)
 
                 If SchiffRichtung = enumRichtung.Vertikal Then
                     tmpPic.RotateFlip(RotateFlipType.Rotate90FlipNone)
@@ -180,6 +180,65 @@
 
     End Function
 
+    ' Erhalte den Schiffteil
+    Private Function ErhalteSchiffPart(ByVal ShipPartName As String, ByVal Number As Integer) As Image
+
+        Dim pObject As Image = Nothing
+
+        If ShipPartName = BildSchiffBattleship Then
+
+            Select Case Number
+                Case 1
+                    pObject = My.Resources.Battleship_1
+                Case 2
+                    pObject = My.Resources.Battleship_2
+                Case 3
+                    pObject = My.Resources.Battleship_3
+                Case 4
+                    pObject = My.Resources.Battleship_4
+            End Select
+
+        ElseIf ShipPartName = BildSchiffCarrier Then
+
+            Select Case Number
+                Case 1
+                    pObject = My.Resources.Carrier_1
+                Case 2
+                    pObject = My.Resources.Carrier_2
+                Case 3
+                    pObject = My.Resources.Carrier_3
+                Case 4
+                    pObject = My.Resources.Carrier_4
+                Case 5
+                    pObject = My.Resources.Carrier_5
+            End Select
+
+        ElseIf ShipPartName = BildSchiffPatrol Then
+
+            Select Case Number
+                Case 1
+                    pObject = My.Resources.Patrol_1
+                Case 2
+                    pObject = My.Resources.Patrol_2
+            End Select
+
+        ElseIf ShipPartName = BildSchiffSubmarine Then
+
+            Select Case Number
+                Case 1
+                    pObject = My.Resources.Submarine_1
+                Case 2
+                    pObject = My.Resources.Submarine_2
+                Case 3
+                    pObject = My.Resources.Submarine_3
+            End Select
+
+        End If
+
+        ErhalteSchiffPart = pObject
+
+    End Function
+
 #End Region
 
 #Region "Auf Schiff feuern"
@@ -194,7 +253,7 @@
 
             If FeuerSchiff = enumSpielfeld.BOARD_STATE_HIT Then
 
-                Dim Bild As Image = Image.FromFile(BildGetroffen)
+                Dim Bild As Image = BildGetroffen
 
                 .Value = Nothing
                 .Value = Bild
@@ -206,7 +265,7 @@
                 DatenObjekt.resetMinenTreffer()
                 MinenTreffer(DGV, DatenObjekt, Zeile, Spalte)
 
-                Dim Bild As Image = Image.FromFile(BildMine)
+                Dim Bild As Image = BildMine
 
                 .Value = Nothing
                 .Style.BackColor = Color.Navy
@@ -216,7 +275,7 @@
 
             ElseIf FeuerSchiff = enumSpielfeld.BOARD_STATE_MISS Then
 
-                Dim Bild As Image = Image.FromFile(BildDaneben)
+                Dim Bild As Image = BildDaneben
 
                 .Value = Nothing
                 .Style.BackColor = Color.Navy
@@ -255,11 +314,11 @@
             If DatenObjekt.SetzeMine(SetzMineY, SetzMineX) = True Then
 
                 If DatenObjekt.getBoardValue(SetzMineY, SetzMineX) = enumSpielfeld.BOARD_STATE_MINE_HIT Then
-                    DGV.Rows(SetzMineY).Cells(SetzMineX).Value = Image.FromFile(BildMine)
+                    DGV.Rows(SetzMineY).Cells(SetzMineX).Value = BildMine
                     MinenTreffer(DGV, DatenObjekt, SetzMineY, SetzMineX)
 
                 ElseIf SpielDebugModus = True Or ZeigMinen = True Then
-                    DGV.Rows(SetzMineY).Cells(SetzMineX).Value = Image.FromFile(BildMine)
+                    DGV.Rows(SetzMineY).Cells(SetzMineX).Value = BildMine
 
                 End If
 
@@ -288,10 +347,10 @@
                     pResult = DatenObjekt.MineExplodieren(i, j)
 
                     If pResult = enumSpielfeld.BOARD_STATE_MISS Then
-                        DGV.Rows(i).Cells(j).Value = Image.FromFile(BildGetroffen)
+                        DGV.Rows(i).Cells(j).Value = BildGetroffen
 
                     ElseIf pResult = enumSpielfeld.BOARD_STATE_HIT Then
-                        DGV.Rows(i).Cells(j).Value = Image.FromFile(BildGetroffen)
+                        DGV.Rows(i).Cells(j).Value = BildGetroffen
 
                     ElseIf pResult = enumSpielfeld.BOARD_STATE_MINE_HIT Then
                         MinenTreffer(DGV, DatenObjekt, i, j)

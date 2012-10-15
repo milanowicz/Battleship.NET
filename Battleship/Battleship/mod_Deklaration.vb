@@ -23,23 +23,23 @@
 
     ' Spiel Bilder
     Public Const SpielSchiffAnzahl As Integer = 4
-    Public Const BildWasser As String = "Bilder\water.gif"
-    Public Const BildDaneben As String = "Bilder\splash.gif"
-    Public Const BildGetroffen As String = "Bilder\fire.gif"
+    Public BildWasser = My.Resources.water
+    Public BildDaneben = My.Resources.splash
+    Public BildGetroffen = My.Resources.fire
 
-    Public Const BildMine As String = "Bilder\minesweeper.png"
+    Public BildMine = My.Resources.minesweeper
 
-    Public Const BildSchiffPatrolHor As String = "Bilder\patrol.gif"
-    Public Const BildSchiffPatrol As String = "Bilder\ShipPart\Patrol_"
+    Public BildSchiffPatrolHor = My.Resources.patrol
+    Public Const BildSchiffPatrol As String = "Patrol_"
 
-    Public Const BildSchiffSubmarineHor As String = "Bilder\submarine.gif"
-    Public Const BildSchiffSubmarine As String = "Bilder\ShipPart\Submarine_"
+    Public BildSchiffSubmarineHor = My.Resources.submarine
+    Public Const BildSchiffSubmarine As String = "Submarine_"
 
-    Public Const BildSchiffBattleshipHor As String = "Bilder\battleship.gif"
-    Public Const BildSchiffBattleship As String = "Bilder\ShipPart\Battleship_"
+    Public BildSchiffBattleshipHor = My.Resources.battleship
+    Public Const BildSchiffBattleship As String = "Battleship_"
 
-    Public Const BildSchiffCarrierHor As String = "Bilder\carrier.gif"
-    Public Const BildSchiffCarrier As String = "Bilder\ShipPart\Carrier_"
+    Public BildSchiffCarrierHor = My.Resources.carrier
+    Public Const BildSchiffCarrier As String = "Carrier_"
 
     ' Spielfeld Data Grid View Breite & Höhe
     Public Const SpaltenBreite As Integer = 30
